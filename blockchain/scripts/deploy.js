@@ -5,32 +5,35 @@ async function sleep(ms) {
 }
 
 async function main() {
-  // Deploy the Token Contract
-  const tokenContract = await hre.ethers.deployContract("Token");
-  await tokenContract.waitForDeployment();
-  console.log("Token deployed to:", tokenContract.target);
+  try {
+    // Deploy the dFUSE Contract
+    const dFuseContract = await hre.ethers.getContractFactory("dFUSE");
+    const deployedDfuse = await dFuseContract.deploy();
+    console.log("dFUSE deployed to:", deployedDfuse.address);
 
-  // Deploy the Exchange Contract
-  const exchangeContract = await hre.ethers.deployContract("Exchange", [
-    tokenContract.target,
-  ]);
-  await exchangeContract.waitForDeployment();
-  console.log("Exchange deployed to:", exchangeContract.target);
+    // Wait for 30 seconds to let Etherscan catch up on contract deployments
+    await sleep(30 * 1000);
 
-  // Wait for 30 seconds to let Etherscan catch up on contract deployments
-  await sleep(30 * 1000);
+    // Verify the contract on Etherscan
+    await verifyContract(deployedDfuse.address);
+  } catch (error) {
+    console.error("Error deploying or verifying contract:", error);
+    process.exit(1); // Exit the process with a non-zero status code
+  }
+}
 
-  // Verify the contracts on Etherscan
-  await hre.run("verify:verify", {
-    address: tokenContract.target,
-    constructorArguments: [],
-    contract: "contracts/Token.sol:Token",
-  });
-
-  await hre.run("verify:verify", {
-    address: exchangeContract.target,
-    constructorArguments: [tokenContract.target],
-  });
+async function verifyContract(contractAddress) {
+  try {
+    await hre.run("verify:verify", {
+      address: contractAddress,
+      constructorArguments: [], // No constructor arguments in this case
+      contract: "dFUSE", // Contract name without the .sol extension
+      network: "sepolia" // Specify the network where the contract is deployed
+    });
+    console.log("Contract verified on Etherscan");
+  } catch (error) {
+    console.error("Error verifying contract on Etherscan:", error);
+  }
 }
 
 // We recommend this pattern to be able to use async/await everywhere
