@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creator Page</title>
+    <link rel="stylesheet" href="./styles/creator-styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/web3@4.5.0/dist/web3.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Create Project</h2>
+        <form id="createForm" onsubmit="createProject(event)">
+            <input type="text" id="ownerName" placeholder="Owner Name" required />
+            <input type="text" id="projectName" placeholder="Project Name" required />
+            <textarea id="description" placeholder="Project Description" required></textarea>
+            <input type="text" id="imageUrl" placeholder="Image URL" required />
+            <input type="text" id="goalAmount" placeholder="Goal Amount (ETH)" required />
+            <button type="submit">Create Project</button>
+        </form>
+
+        <h2>Remove Project</h2>
+        <form id="removeForm" onsubmit="removeProject(event)">
+            <input type="number" id="removeProjectId" placeholder="Project ID" required />
+            <button type="submit">Remove</button>
+        </form>
+
+        <h2>Update Project Description</h2>
+        <form id="updateForm" onsubmit="updateProjectDescription(event)">
+            <input type="number" id="updateProjectId" placeholder="Project ID" required />
+            <input type="text" id="newDescription" placeholder="New Description" required />
+            <button type="submit">Update Description</button>
+        </form>
+    </div>
+
+    <script src="creator.js"></script>
+</body>
+</html>

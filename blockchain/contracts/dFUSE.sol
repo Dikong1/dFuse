@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.19;
 
 
 // address: 0x9Fd4cC68996C39a54bEf014FE2238F2bc12e45DC
@@ -92,7 +92,48 @@ contract dFUSE {
         emit ProjectUpdated(projectId, _newDescription);
     }
 
-    function getAllProjects() public view returns (Project[] memory) {
-        return projects;
+    function getAllProjects() public view returns (
+        address[] memory ownerAddresses, 
+        string[] memory ownerNames, 
+        string[] memory projectNames, 
+        string[] memory descriptions, 
+        string[] memory imageUrls, 
+        uint256[] memory goalAmounts, 
+        uint256[] memory fundedAmounts, 
+        bool[] memory isOpenFlags
+    ) 
+{
+    ownerAddresses = new address[](projectCounter);
+    ownerNames = new string[](projectCounter);
+    projectNames = new string[](projectCounter);
+    descriptions = new string[](projectCounter);
+    imageUrls = new string[](projectCounter);
+    goalAmounts = new uint256[](projectCounter);
+    fundedAmounts = new uint256[](projectCounter);
+    isOpenFlags = new bool[](projectCounter);
+
+    for (uint256 i = 0; i < projectCounter; i++) {
+        Project storage project = projects[i];
+        ownerAddresses[i] = project.ownerAddress;
+        ownerNames[i] = project.ownerName;
+        projectNames[i] = project.projectName;
+        descriptions[i] = project.description;
+        imageUrls[i] = project.imageUrl;
+        goalAmounts[i] = project.goalAmount;
+        fundedAmounts[i] = project.fundedAmount;
+        isOpenFlags[i] = project.isOpen;
     }
+
+    return (
+        ownerAddresses, 
+        ownerNames, 
+        projectNames, 
+        descriptions, 
+        imageUrls, 
+        goalAmounts, 
+        fundedAmounts, 
+        isOpenFlags
+    );
+}
+
 }

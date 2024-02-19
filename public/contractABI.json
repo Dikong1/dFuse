@@ -1,38 +1,5 @@
 [
 	{
-		"inputs": [
-			{
-				"internalType": "string",
-				"name": "_ownerName",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_projectName",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_description",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_imageUrl",
-				"type": "string"
-			},
-			{
-				"internalType": "uint256",
-				"name": "_goalAmount",
-				"type": "uint256"
-			}
-		],
-		"name": "createProject",
-		"outputs": [],
-		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
 		"anonymous": false,
 		"inputs": [
 			{
@@ -56,24 +23,6 @@
 		],
 		"name": "FundingReceived",
 		"type": "event"
-	},
-	{
-		"inputs": [
-			{
-				"internalType": "uint256",
-				"name": "projectId",
-				"type": "uint256"
-			},
-			{
-				"internalType": "uint256",
-				"name": "amount",
-				"type": "uint256"
-			}
-		],
-		"name": "fundProject",
-		"outputs": [],
-		"stateMutability": "payable",
-		"type": "function"
 	},
 	{
 		"anonymous": false,
@@ -160,6 +109,118 @@
 	{
 		"inputs": [
 			{
+				"internalType": "string",
+				"name": "_ownerName",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_projectName",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_description",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "_imageUrl",
+				"type": "string"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_goalAmount",
+				"type": "uint256"
+			}
+		],
+		"name": "createProject",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "projectId",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "amount",
+				"type": "uint256"
+			}
+		],
+		"name": "fundProject",
+		"outputs": [],
+		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getAllProjects",
+		"outputs": [
+			{
+				"internalType": "address[]",
+				"name": "ownerAddresses",
+				"type": "address[]"
+			},
+			{
+				"internalType": "string[]",
+				"name": "ownerNames",
+				"type": "string[]"
+			},
+			{
+				"internalType": "string[]",
+				"name": "projectNames",
+				"type": "string[]"
+			},
+			{
+				"internalType": "string[]",
+				"name": "descriptions",
+				"type": "string[]"
+			},
+			{
+				"internalType": "string[]",
+				"name": "imageUrls",
+				"type": "string[]"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "goalAmounts",
+				"type": "uint256[]"
+			},
+			{
+				"internalType": "uint256[]",
+				"name": "fundedAmounts",
+				"type": "uint256[]"
+			},
+			{
+				"internalType": "bool[]",
+				"name": "isOpenFlags",
+				"type": "bool[]"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "projectCounter",
+		"outputs": [
+			{
+				"internalType": "uint256",
+				"name": "",
+				"type": "uint256"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
 				"internalType": "uint256",
 				"name": "projectId",
 				"type": "uint256"
@@ -186,74 +247,6 @@
 		"name": "updateProjectDescription",
 		"outputs": [],
 		"stateMutability": "nonpayable",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "getAllProjects",
-		"outputs": [
-			{
-				"components": [
-					{
-						"internalType": "address",
-						"name": "ownerAddress",
-						"type": "address"
-					},
-					{
-						"internalType": "string",
-						"name": "ownerName",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "projectName",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "description",
-						"type": "string"
-					},
-					{
-						"internalType": "string",
-						"name": "imageUrl",
-						"type": "string"
-					},
-					{
-						"internalType": "uint256",
-						"name": "goalAmount",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "fundedAmount",
-						"type": "uint256"
-					},
-					{
-						"internalType": "bool",
-						"name": "isOpen",
-						"type": "bool"
-					}
-				],
-				"internalType": "struct dFUSE.Project[]",
-				"name": "",
-				"type": "tuple[]"
-			}
-		],
-		"stateMutability": "view",
-		"type": "function"
-	},
-	{
-		"inputs": [],
-		"name": "projectCounter",
-		"outputs": [
-			{
-				"internalType": "uint256",
-				"name": "",
-				"type": "uint256"
-			}
-		],
-		"stateMutability": "view",
 		"type": "function"
 	}
 ]

@@ -1,0 +1,175 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+nav #logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+nav ul li a.active, nav ul li a:hover {
+    background-color: #444;
+}
+
+#search-bar {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+}
+
+#search-bar input[type="text"] {
+    width: 50%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+#search-bar button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #5cb85c;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#search-bar button:hover {
+    background-color: #4cae4c;
+}
+
+/* ... existing styles ... */
+
+.container-fluid {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.project-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-bottom: 20px; /* Add space between project cards */
+}
+
+.project-card img {
+    border-radius: 10px; /* Add rounded corners to the image */
+    margin-right: 20px;
+}
+
+.project-info {
+    flex: 1; /* Allow project info to fill the space */
+}
+
+.project-info h3 {
+    margin: 0;
+    color: #333;
+    font-size: 1.5em; /* Larger text for project title */
+}
+
+.project-info p {
+    margin: 0;
+    margin-bottom: 10px;
+}
+
+.progress {
+    position: relative;
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 20px;
+    border: 0.1em solid aqua;
+    margin-bottom: 10px;
+}
+
+.progress-bar {
+    height: 20px;
+    border-radius: 20px;
+    text-align: center; /* Center text vertically */
+    color: white;
+    background-color: #4caf50;
+}
+
+.progress-text {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 50%;
+    transform: translateY(-50%); /* Vertically center */
+    color: black; /* or any color you prefer */
+}
+
+.support-section {
+    text-align: right;
+    margin-left: 20px; /* Add space between the support section and the project info */
+}
+
+.support-section input[type="text"] {
+    margin-bottom: 10px;
+    width: auto; /* Allow input width to be determined by content */
+    padding: 5px;
+}
+
+.support-section .support-btn {
+    width: auto;
+    padding: 10px 20px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 768px) {
+    .project-card {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .project-card img {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .support-section {
+        text-align: left;
+        margin-left: 0;
+    }
+}

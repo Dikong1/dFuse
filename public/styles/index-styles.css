@@ -1,0 +1,51 @@
+/* Existing styles... */
+
+/* Styles for the index page */
+.container {
+    text-align: center;
+    padding-top: 50px;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+.choice-button {
+    display: inline-block;
+    margin: 20px;
+    padding: 15px 30px;
+    font-size: 1.2em;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.choice-button:hover,
+.choice-button:focus {
+    background-color: #0056b3;
+    text-decoration: none;
+    color: #fff;
+}
+
+/* Add some padding at the bottom */
+body {
+    padding-bottom: 50px;
+}
+
+/* Responsive design for smaller screens */
+@media (max-width: 768px) {
+    .choice-button {
+        padding: 10px 20px; 
+        font-size: 1em;
+        margin: 10px;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+}

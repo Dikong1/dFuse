@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Page (dFuse)</title>
+    <link rel="stylesheet" href="styles/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/web3@4.5.0/dist/web3.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav>
+            <div id="logo">dFUSE</div>
+            <ul>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="user.html" class="active">Projects</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="search-bar">
+            <input type="text" id="searchInput" placeholder="Search" />
+            <button id="searchButton">Search</button>
+        </section>
+
+        <section id="projects-section" class="container-fluid">
+            <!-- Projects will be dynamically inserted here by JavaScript -->
+        </section>
+    </main>
+
+    <script src="user.js"></script>
+
+</body>
+</html>
