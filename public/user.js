@@ -99,7 +99,7 @@ const displayProjects = async () => {
 
 
 const handleFundButtonClick = async (projectId) => {
-    document.querySelector('#support-btn').disabled = true;
+    document.querySelector(`#supportBtn${projectId}`).disabled = true;
     const amountInput = document.getElementById(`fundAmount${projectId}`);
     if (!amountInput) {
         console.error('Amount input not found for project:', projectId);
@@ -114,7 +114,7 @@ const handleFundButtonClick = async (projectId) => {
     amountInput.value = ''; // Clear the input after getting the value
 
     await fundProject(projectId, amount);
-    document.querySelector('#support-btn').disabled = false;
+    document.querySelector(`#supportBtn${projectId}`).disabled = false;
 };
 
 window.addEventListener('load', async () => {
