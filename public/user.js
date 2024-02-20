@@ -36,7 +36,6 @@ const fundProject = async (projectId, amount) => {
         alert('Failed to fund project: ' + error.message);
     }
 };
-
 const displayProjects = async () => {
     try {
         if (!window.contract) {
@@ -53,13 +52,27 @@ const displayProjects = async () => {
             return;
         }
 
+        // Clear existing projects from the display div
+        projectsDisplayDiv.innerHTML = '';
+
         // Iterate over the projects
         for (let i = 0; i < data[0].length; i++) {
             const projectId = i; 
             const goalAmount = BigInt(data[5][i]);
             const fundedAmount = BigInt(data[6][i]);
-            const fundedPercentage = goalAmount > 0n ? (fundedAmount * 100n / goalAmount).toString() : '0';
-            const progressWidth = fundedAmount * 100n / goalAmount;
+            let fundedPercentage = '0';
+            let progressWidth = '0%';
+
+            // Check if goalAmount is not zero to avoid division by zero
+            if (goalAmount > 0n) {
+                fundedPercentage = (fundedAmount * 100n / goalAmount).toString();
+                progressWidth = (fundedAmount * 100n / goalAmount).toString() + '%';
+            }
+
+            // Skip deleted projects
+            if (data[0][i] === '0x0000000000000000000000000000000000000000' || data[2][i] === '') {
+                continue;
+            }
 
             // Create the project card
             const projectCard = document.createElement('div');
@@ -70,7 +83,7 @@ const displayProjects = async () => {
                     <h3>${data[2][i]}</h3>
                     <p>${data[3][i]}</p>
                     <div class="progress">
-                        <div class="progress-bar" style="width: ${progressWidth > 100n ? '100%' : fundedPercentage + '%'}"></div>
+                        <div class="progress-bar" style="width: ${progressWidth}"></div>
                         <div class="progress-text">${fundedPercentage}%</div>
                     </div>
                 </div>
@@ -84,7 +97,7 @@ const displayProjects = async () => {
             projectsDisplayDiv.appendChild(projectCard);
 
             // Disable the support button if the project is fully funded
-            if (progressWidth >= 100n) {
+            if (goalAmount > 0n && fundedAmount >= goalAmount) {
                 const supportButton = document.getElementById(`supportBtn${projectId}`);
                 supportButton.disabled = true;
                 supportButton.innerText = 'Fully Funded';
@@ -95,6 +108,7 @@ const displayProjects = async () => {
         alert('Failed to load projects: ' + error.message);
     }
 };
+
 
 
 
