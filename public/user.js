@@ -137,17 +137,34 @@ const setupEventListeners = async () => {
             return;
         }
 
-        // Listen for the ProjectCreated event
         window.contract.events.ProjectCreated()
             .on('data', async (event) => {
                 console.log("New project created:", event.returnValues.projectId);
-                await displayProjects(); // Update the project list
-            })
-            .on('error', console.error);
+                await displayProjects();
+            });
+
+        window.contract.events.FundingReceived()
+            .on('data', async (event) => {
+                console.log("Funding received for project:", event.returnValues.projectId);
+                await displayProjects();
+            });
+
+        window.contract.events.ProjectRemoved()
+        .on('data', async (event) => {
+            console.log("Project removed:", event.returnValues.projectId);
+            await displayProjects();
+        });
     } catch (error) {
         console.error('Error setting up event listeners:', error);
     }
 };
+
+window.addEventListener('load', async () => {
+    await connectWallet();
+    await connectContract();
+    await displayProjects();
+    await setupEventListeners(); // Setup event listeners after loading the page
+});
 
 
 window.addEventListener('load', async () => {
