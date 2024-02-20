@@ -154,6 +154,18 @@ const setupEventListeners = async () => {
             console.log("Project removed:", event.returnValues.projectId);
             await displayProjects();
         });
+
+        window.contract.events.ProjectUpdated()
+            .on('data', async (event) => {
+                console.log("Project updated:", event.returnValues.projectId);
+                await displayProjects();
+            });
+
+        window.contract.events.ProjectClosed()
+        .on('data', async (event) => {
+            console.log("Project closed:", event.returnValues.projectId);
+            await displayProjects();
+        });
     } catch (error) {
         console.error('Error setting up event listeners:', error);
     }
