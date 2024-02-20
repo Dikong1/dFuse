@@ -16,7 +16,7 @@ const connectWallet = async () => {
 
 const connectContract = async () => {
     const ABI = await loadContractABI();
-    const address = '0xD664D9cA9eCe28618623Ee280C33e1B6c271830e';
+    const address = '0x0D75257e29a13B33D9C0944AB2f45C9eea2e3E9d';
     window.web3 = new Web3(window.ethereum);
     window.contract = new window.web3.eth.Contract(ABI, address);
 }

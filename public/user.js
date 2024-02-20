@@ -18,7 +18,7 @@ const connectWallet = async () => {
 
 async function connectContract() {
     const ABI = await loadContractABI();
-    const address = '0xD664D9cA9eCe28618623Ee280C33e1B6c271830e';
+    const address = '0x0D75257e29a13B33D9C0944AB2f45C9eea2e3E9d';
     window.web3 = new Web3(window.ethereum);
     window.contract = new window.web3.eth.Contract(ABI, address);
 }
@@ -110,8 +110,6 @@ const displayProjects = async () => {
 };
 
 
-
-
 const handleFundButtonClick = async (projectId) => {
     document.querySelector(`#supportBtn${projectId}`).disabled = true;
     const amountInput = document.getElementById(`fundAmount${projectId}`);
@@ -131,8 +129,30 @@ const handleFundButtonClick = async (projectId) => {
     document.querySelector(`#supportBtn${projectId}`).disabled = false;
 };
 
+const setupEventListeners = async () => {
+    try {
+        // Check if the contract is connected
+        if (!window.contract) {
+            console.error('Contract not connected.');
+            return;
+        }
+
+        // Listen for the ProjectCreated event
+        window.contract.events.ProjectCreated()
+            .on('data', async (event) => {
+                console.log("New project created:", event.returnValues.projectId);
+                await displayProjects(); // Update the project list
+            })
+            .on('error', console.error);
+    } catch (error) {
+        console.error('Error setting up event listeners:', error);
+    }
+};
+
+
 window.addEventListener('load', async () => {
     await connectWallet();
     await connectContract();
     await displayProjects();
+    await setupEventListeners();
 });
