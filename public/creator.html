@@ -6,33 +6,71 @@
     <title>Creator Page</title>
     <link rel="stylesheet" href="./styles/creator-styles.css">
     <script src="https://cdn.jsdelivr.net/npm/web3@4.5.0/dist/web3.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <div class="container">
-        <h2>Create Project</h2>
-        <form id="createForm" onsubmit="createProject(event)">
-            <input type="text" id="ownerName" placeholder="Owner Name" required />
-            <input type="text" id="projectName" placeholder="Project Name" required />
-            <textarea id="description" placeholder="Project Description" required></textarea>
-            <input type="text" id="imageUrl" placeholder="Image URL" required />
-            <input type="text" id="goalAmount" placeholder="Goal Amount (ETH)" required />
-            <button type="submit">Create Project</button>
-        </form>
+<body class="bg-teal-200">
+    <header>
+        <nav>
+            <div id="logo"><a href="about.html">dFUSE</a></div>
+            <ul>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="user.html" class="active">Projects</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <h2>Remove Project</h2>
-        <form id="removeForm" onsubmit="removeProject(event)">
-            <input type="number" id="removeProjectId" placeholder="Project ID" required />
-            <button type="submit">Remove</button>
-        </form>
+    <div class="container mx-auto px-4 py-8 bg-green-100">
+        <div class="text-center">
+            <h1 class="text-3xl font-bold mb-4">Welcome to dFUSE Creator Page</h1>
+            <p class="text-lg text-gray-800"><span class="font-extrabold">dFUSE</span> is a platform that empowers creators to bring their projects to life through decentralized funding.<br> Whether you're an artist, entrepreneur, or developer, <span class="font-extrabold">dFUSE</span> provides the tools you need to showcase your work and connect with supporters directly.</p>
+            <p class="text-lg text-gray-800 mt-4">Explore the options below to create, manage, and update your projects:</p>
+        </div>
+    </div>
+    
 
-        <h2>Update Project Description</h2>
-        <form id="updateForm" onsubmit="updateProjectDescription(event)">
-            <input type="number" id="updateProjectId" placeholder="Project ID" required />
-            <input type="text" id="newDescription" placeholder="New Description" required />
-            <button type="submit">Update Description</button>
-        </form>
+    <div class="container bg-green-100">
+        <div class="bg-green-300 rounded-md p-4 shadow-md mb-4">
+            <h2 class="font-extrabold text-lg mb-3">Create Project</h2>
+            <form id="createForm" onsubmit="createProject(event)">
+                <input type="text" id="ownerName" placeholder="Owner Name" required />
+                <input type="text" id="projectName" placeholder="Project Name" required />
+                <textarea id="description" class="pt-1" placeholder="  Project Description" required></textarea>
+                <input type="text" id="imageUrl" placeholder="Image URL" required />
+                <input type="text" id="goalAmount" placeholder="Goal Amount (ETH)" required />
+                <button type="submit" class=" bg-green-400 hover:bg-green-500 h-14">Create Project</button>
+            </form>
+        </div>
+
+        <div class="bg-green-300 rounded-md p-4 shadow-md mb-4">
+            <h2 class="font-extrabold text-lg mb-3 ">Remove Project</h2>
+            <form id="removeForm" onsubmit="removeProject(event)">
+                <input type="number" id="removeProjectId" placeholder="Project ID" required />
+                <button type="submit" class=" bg-green-400 hover:bg-green-500 h-14">Remove</button>
+            </form>
+        </div>
+        
+        <div class="bg-green-300 rounded-md p-4 shadow-md mb-4">
+            <h2 class="font-extrabold text-lg mb-3">Update Project Description</h2>
+            <form id="updateForm" onsubmit="updateProjectDescription(event)">
+                <input type="number" id="updateProjectId" placeholder="Project ID" required />
+                <input type="text" id="newDescription" placeholder="New Description" required />
+                <button type="submit" class=" bg-green-400 hover:bg-green-500 h-14">Update Description</button>
+            </form>
+        </div>
+        
     </div>
 
     <script src="creator.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                colors: {
+                    clifford: '#da373d',
+                }
+                }
+            }
+        }
+    </script>
 </body>
 </html>

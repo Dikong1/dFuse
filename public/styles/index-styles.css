@@ -3,7 +3,6 @@
 /* Styles for the index page */
 .container {
     text-align: center;
-    padding-top: 50px;
 }
 
 h1 {
@@ -30,11 +29,6 @@ h1 {
     background-color: #0056b3;
     text-decoration: none;
     color: #fff;
-}
-
-/* Add some padding at the bottom */
-body {
-    padding-bottom: 50px;
 }
 
 /* Responsive design for smaller screens */

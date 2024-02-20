@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.19;
 
+// Address: 0xD664D9cA9eCe28618623Ee280C33e1B6c271830e
 
-// address: 0x9Fd4cC68996C39a54bEf014FE2238F2bc12e45DC
 contract dFUSE {
     struct Project {
         address ownerAddress;

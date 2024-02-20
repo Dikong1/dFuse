@@ -42,7 +42,6 @@ textarea {
 
 button {
     padding: 10px 20px;
-    border: none;
     background-color: #5cb85c;
     color: white;
     border-radius: 5px;
@@ -50,6 +49,49 @@ button {
     font-size: 16px;
 }
 
-button:hover {
-    background-color: #4cae4c;
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+    text-align: center;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+
+nav #logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+nav ul li a.active, nav ul li a:hover {
+    background-color: #444;
 }
